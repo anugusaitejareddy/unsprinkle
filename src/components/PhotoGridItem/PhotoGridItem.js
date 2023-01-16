@@ -22,7 +22,7 @@ const PhotoGridItem = ({ id, src, alt, tags }) => {
             ${src.replace('.jpg', '@3x.jpg')} 3x
             `}
           />
-          <Image src={src} />
+          <Image src={src} alt={alt} />
         </picture>
       </Anchor>
       <Tags>
@@ -50,17 +50,24 @@ const Image = styled.img`
 `;
 
 const Tags = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-`;
-
-const Tag = styled.li`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 8px 0;
+  `;
+  
+  
+  const Tag = styled.li`
   padding: 4px 8px;
   background: var(--color-gray-300);
   font-size: 0.875rem;
   font-weight: 475;
   color: var(--color-gray-800);
+  display: inline;
+  
+  &:not(:last-of-type){  
+    margin-right: 8px;
+  }
 `;
 
 export default PhotoGridItem;
